@@ -4,7 +4,7 @@ import random
 def get_shot(guesses):
     while True:
         try:
-            shot =input("Please enter your guess: ")
+            shot = input("Please enter your guess: ")
             if shot.lower() == "exit":
                 return "exit"
             shot = int(shot)
@@ -35,26 +35,31 @@ def show_board(hit, miss):
                 ch = " * "
             row += ch
             place += 1
-            print(x, " ", row)
+        print(x, " ", row)
 
 
-def check_shot(shot, boat1, hit, miss, comp):
-    if shot in boat1:
-        boat1.remove(shot)
-        if len(boat1) > 0:
+def check_shot(shot, boat, hit, miss):
+    if shot in boat:
+        boat.remove(shot)
+        if len(boat) > 0:
             hit.append(shot)
     else:
         miss.append(shot)
-    return boat1, hit, miss, comp
+    return boat, hit, miss
 
 
 def generate_random_boats():
     boats = []
     while len(boats) < 5:
-        new_boat = random.randint(0, 99)
+        new_boat = random.randint(0, 49)
         if new_boat not in boats:
             boats.append(new_boat)
     return boats
+
+
+def exit_game():
+    user_input = input("Do you want to exit the game? (y/n): ")
+    return user_input.lower() == "y"
 
 
 def play_battleship_game():
@@ -64,5 +69,3 @@ def play_battleship_game():
 
     player_name = input("Enter your name: ")
     print(f"Ready {player_name}! Let's play Battleship.")
-
-   
