@@ -3,13 +3,13 @@ import random
 
 def get_shot(guesses):
     while True:
-        row = input("Please enter the row (0-6): ")
+        row = input("Please enter the row (0 - 6): ")
         if row.lower() == "exit":
             return "exit"
 
         try:
-            row = int(row)  
-            col = int(input("Please enter the column (0-6): "))
+            row = int(row)
+            col = int(input("Please enter the column (0 - 6): "))
 
             shot = 7 * row + col
 
@@ -60,7 +60,7 @@ def generate_random_boats():
 
 
 def exit_game():
-    user_input = input("Do you want to exit the game? (yes/no): ")
+    user_input = input("Do you want to exit the game? (yes / no): ")
     return user_input.lower() == "yes"
 
 
@@ -72,15 +72,15 @@ def play_battleship_game():
     print("\n")
     print(f"READY {player_name}! Let's play Battleship.")
     print("\n")
-      
-    # Generate 3 random hidden boat positions 
+
+    # Generate 3 random hidden boat positions
     boat = generate_random_boats()
     hidden_boats = ['?' for _ in range(48)]
 
     # Instructions how to play the game
     print("You have a total of 20 turns to sink 3 hidden ships.")
-    print("Guess a row and a column (0-6).You will see X when you hit a ship.")
-    print("Otherwise O if you miss.")
+    print("Guess a row and a column (0 - 6).")
+    print(" You will see X when you hit a ship,Otherwise O if you miss.")
     print("Type'exit' instead of row number if you want to quit")
     print("Choose Wisely,GOODLUCK!")
     print("\n")
@@ -98,7 +98,7 @@ def play_battleship_game():
         if shot == "exit":
             if exit_game():
                 return
-                
+
         try:
             shot = int(shot)
             if shot < 0 or shot > 48:
@@ -117,15 +117,15 @@ def play_battleship_game():
         except ValueError:
             print("Incorrect entry - please enter your guess as a number.")
             print("\n")
-        
+
         # Check if the game is over by winning or losing
         if len(boat) == 0:
             print("Congratulations! You've sunk all the battleships.You WIN!")
             if exit_game():
                 return
-         
+
     if len(boat) > 0:
-        print("===== GAME-OVER!Better luck next time! =====")
+        print(" ===== GAMEOVER!Better luck next time! ===== ")
 
 
 play_battleship_game()
