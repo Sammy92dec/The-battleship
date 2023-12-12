@@ -1,12 +1,14 @@
 import random
 
 
+# Get inputs like row and column,Input to exit the game
+
 def get_shot(guesses):
     while True:
         row = input("Please enter the row (0 - 6): ")
         if row.lower() == "exit":
             return "exit"
-
+          
         try:
             row = int(row)
             col = int(input("Please enter the column (0 - 6): "))
@@ -22,6 +24,8 @@ def get_shot(guesses):
         except ValueError:
             print("Incorrect entry,Please enter your number.")
 
+
+# Creating the board
 
 def show_board(hit, miss):
     print("===== BATTLESHIP Board =====")
@@ -41,6 +45,8 @@ def show_board(hit, miss):
         print(x, "", row)
 
 
+# Check if its a miss or hit
+
 def check_shot(shot, boat, hit, miss):
     if shot in boat:
         boat.remove(shot)
@@ -49,6 +55,8 @@ def check_shot(shot, boat, hit, miss):
         miss.append(shot)
     return boat, hit, miss
 
+
+# Random places in the board
 
 def generate_random_boats():
     boats = []
@@ -59,14 +67,19 @@ def generate_random_boats():
     return boats
 
 
+# Fuction after player types "exit"
+
 def exit_game():
     user_input = input("Do you want to exit the game? (yes / no): ")
     return user_input.lower() == "yes"
 
 
+# Commands to hit ,miss and checks ships found
+
 def play_battleship_game():
     hit = []
     miss = []
+    ships_found = 0
 
     player_name = input("Enter your name: ")
     print("\n")
@@ -74,10 +87,12 @@ def play_battleship_game():
     print("\n")
 
     # Generate 3 random hidden boat positions
+
     boat = generate_random_boats()
     hidden_boats = ['?' for _ in range(48)]
 
     # Instructions how to play the game
+
     print("You have a total of 20 turns to sink 3 hidden ships.")
     print("Guess a row and a column (0 - 6).")
     print(" You will see X when you hit a ship,Otherwise O if you miss.")
@@ -87,6 +102,8 @@ def play_battleship_game():
 
     turns_remaining = 20
 
+    # Starting the game loop
+
     for i in range(turns_remaining):
         print(f"Turns left: {turns_remaining - i}")
         show_board(hit, miss)
@@ -95,6 +112,7 @@ def play_battleship_game():
         print("\n")
 
         # Player to exit the game
+
         if shot == "exit":
             if exit_game():
                 return
@@ -119,6 +137,7 @@ def play_battleship_game():
             print("\n")
 
         # Check if the game is over by winning or losing
+
         if len(boat) == 0:
             print("Congratulations! You've sunk all the battleships.You WIN!")
             if exit_game():
@@ -127,5 +146,7 @@ def play_battleship_game():
     if len(boat) > 0:
         print(" ===== GAMEOVER!Better luck next time! ===== ")
 
+
+# Start the game
 
 play_battleship_game()
