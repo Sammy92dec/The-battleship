@@ -82,7 +82,7 @@ def play_battleship_game():
     print("Choose Wisely ,GOODLUCK!")
 
     turns_remaining = 20
-    revealed_boats = []
+
     for i in range(turns_remaining):
         print(f"Turns left: {turns_remaining - i}")
         show_board(hit, miss)
@@ -93,18 +93,7 @@ def play_battleship_game():
         if shot == "exit":
             if exit_game():
                 return
-
-        if shot == "help":
-            hint_indices = [i for i, x in enumerate(hidden_boats) if x == '?']
-            if hint_indices:
-                hint_index = random.choice(hint_indices)
-                print(f"HINT: One of the boats is at {boat[hint_index]}.")
-                hidden_boats[hint_index] = str(boat[hint_index])
-                show_board(hit, miss)
-            else:
-                print("No more hidden boats for hint.")
-            continue  
-
+                
         try:
             shot = int(shot)
             if shot < 0 or shot > 48:
