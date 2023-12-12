@@ -4,22 +4,21 @@ import random
 def get_shot(guesses):
     while True:
         try:
-            shot = input("Please enter your guess: ")
-            if shot.lower() == "exit":
-                return "exit"
-            shot = int(shot)
-            if shot < 0 or shot > 49:
-                print("Incorrect number,Please try again")
+            row = int(input("Please enter the row (0-6): "))
+            col = int(input("Please enter the column (0-6): "))
+
+            shot = 7 * row + col
+
+            if shot < 0 or shot > 48:
+                print("Incorrect coordinates, Please try again")
             elif shot in guesses:
-                print("Incorrect number,it's been used already")
+                print("Incorrect, it's been used already")
             else:
-                ok = "y"
-                break
+                return shot
         except ValueError:
             print("Incorrect entry,Please enter your number.")
-    return shot
 
-
+            
 def show_board(hit, miss):
     print("---- Player Board ----")
     print("    0  1  2  3  4  5  6 ")
@@ -28,7 +27,7 @@ def show_board(hit, miss):
         row = ""
         for y in range(7):
             if place in hit:
-                ch = " X " 
+                ch = " X "
             elif place in miss:
                 ch = " O "
             else:
@@ -41,8 +40,7 @@ def show_board(hit, miss):
 def check_shot(shot, boat, hit, miss):
     if shot in boat:
         boat.remove(shot)
-        if len(boat) > 0:
-            hit.append(shot)
+        hit.append(shot)
     else:
         miss.append(shot)
     return boat, hit, miss
@@ -51,7 +49,7 @@ def check_shot(shot, boat, hit, miss):
 def generate_random_boats():
     boats = []
     while len(boats) < 5:
-        new_boat = random.randint(0, 49)
+        new_boat = random.randint(0, 48)
         if new_boat not in boats:
             boats.append(new_boat)
     return boats
@@ -71,7 +69,7 @@ def play_battleship_game():
       
     # Generate 5 random hidden boat positions 
     boat = generate_random_boats()
-    hidden_boats = ['?' for _ in range(49)]
+    hidden_boats = ['?' for _ in range(48)]
 
     # Instructions how to play the game
     print("You have a total of 10 turns to try sinking the compnent's ships.")
@@ -79,7 +77,7 @@ def play_battleship_game():
     print("Otherwise O if you miss.")
     print("Choose Wisely ,GOODLUCK!")
 
-    turns_remaining = 10
+    turns_remaining = 20
     revealed_boats = []
     for i in range(turns_remaining):
         print(f"Turns left: {turns_remaining - i}")
@@ -103,22 +101,22 @@ def play_battleship_game():
                 print("No more hidden boats for hint.")
             continue  
 
-    try:
-        shot = int(shot)
-        if shot < 0 or shot > 49:
-            print("Incorrect number, please try again.")
-        elif shot in guesses:
-            print("Incorrect number, it's been used before.")
-        else:
-            boat, hit, miss = check_shot(shot, boat, hit, miss)
-    except ValueError:
-        print("Incorrect entry - please enter your guess as a number.")
-    
-    # Check if the game is over by winning or losing
-    if len(boat) == 0:
-        print("Congratulations! You've sunk all the battleships. You win!")
-        if exit_game():
-            return
+        try:
+            shot = int(shot)
+            if shot < 0 or shot > 48:
+                print("Incorrect number, please try again.")
+            elif shot in guesses:
+                print("Incorrect number, it's been used before.")
+            else:
+                boat, hit, miss = check_shot(shot, boat, hit, miss)
+        except ValueError:
+            print("Incorrect entry - please enter your guess as a number.")
+        
+        # Check if the game is over by winning or losing
+        if len(boat) == 0:
+            print("Congratulations! You've sunk all the battleships. You win!")
+            if exit_game():
+                return
          
     if len(boat) > 0:
         print("Game Over!Better luck next time!")
