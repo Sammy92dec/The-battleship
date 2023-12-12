@@ -69,16 +69,21 @@ def play_battleship_game():
     miss = []
 
     player_name = input("Enter your name: ")
+    print("\n")
     print(f"Ready {player_name}! Let's play Battleship.")
+    print("\n")
       
     # Generate 5 random hidden boat positions 
     boat = generate_random_boats()
     hidden_boats = ['?' for _ in range(48)]
 
     # Instructions how to play the game
-    print("You have a total of 20 turns to sink a total of 3 ships.")
+    print("You have a total of 20 turns to sink 3 hidden ships.")
     print("Guess a row and a column (0-6).You will see X when you hit a ship.")
-    print("Otherwise O if you miss.Choose Wisely ,GOODLUCK!")
+    print("Otherwise O if you miss.")
+    print("Type'exit' in instead of row if you want to quit")
+    print("Choose Wisely,GOODLUCK!")
+    print("\n")
 
     turns_remaining = 20
 
@@ -104,15 +109,16 @@ def play_battleship_game():
                 boat, hit, miss = check_shot(shot, boat, hit, miss)
         except ValueError:
             print("Incorrect entry - please enter your guess as a number.")
+            print("\n")
         
         # Check if the game is over by winning or losing
         if len(boat) == 0:
-            print("Congratulations! You've sunk all the battleships. You win!")
+            print("Congratulations! You've sunk all the battleships.You WIN!")
             if exit_game():
                 return
          
     if len(boat) > 0:
-        print("Game Over!Better luck next time!")
+        print("===== GAME-OVER!Better luck next time! =====")
 
 
 play_battleship_game()
