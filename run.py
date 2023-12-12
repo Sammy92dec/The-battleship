@@ -76,10 +76,9 @@ def play_battleship_game():
     hidden_boats = ['?' for _ in range(48)]
 
     # Instructions how to play the game
-    print("You have a total of 10 turns to try sinking the compnent's ships.")
-    print("Guess a number from 0-48.You will see X when you hit a ship")
-    print("Otherwise O if you miss.")
-    print("Choose Wisely ,GOODLUCK!")
+    print("You have a total of 20 turns to sink a total of 3 ships.")
+    print("Guess a row and a column (0-6).You will see X when you hit a ship.")
+    print("Otherwise O if you miss.Choose Wisely ,GOODLUCK!")
 
     turns_remaining = 20
 
@@ -88,6 +87,7 @@ def play_battleship_game():
         show_board(hit, miss)
         guesses = hit + miss
         shot = get_shot(guesses)
+        print("\n")
 
         # Player to exit the game
         if shot == "exit":
