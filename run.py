@@ -3,8 +3,12 @@ import random
 
 def get_shot(guesses):
     while True:
+        row = input("Please enter the row (0-6): ")
+        if row.lower() == "exit":
+            return "exit"
+
         try:
-            row = int(input("Please enter the row (0-6): "))
+            row = int(row)  
             col = int(input("Please enter the column (0-6): "))
 
             shot = 7 * row + col
@@ -18,7 +22,7 @@ def get_shot(guesses):
         except ValueError:
             print("Incorrect entry,Please enter your number.")
 
-            
+
 def show_board(hit, miss):
     print("---- Player Board ----")
     print("    0  1  2  3  4  5  6 ")
