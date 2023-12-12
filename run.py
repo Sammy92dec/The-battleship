@@ -24,7 +24,7 @@ def get_shot(guesses):
 
 
 def show_board(hit, miss):
-    print("---- Player Board ----")
+    print("===== BATTLESHIP Board =====")
     print("    0  1  2  3  4  5  6 ")
     place = 0
     for x in range(7):
@@ -52,7 +52,7 @@ def check_shot(shot, boat, hit, miss):
 
 def generate_random_boats():
     boats = []
-    while len(boats) < 5:
+    while len(boats) < 3:
         new_boat = random.randint(0, 48)
         if new_boat not in boats:
             boats.append(new_boat)
@@ -60,8 +60,8 @@ def generate_random_boats():
 
 
 def exit_game():
-    user_input = input("Do you want to exit the game? (y/n): ")
-    return user_input.lower() == "y"
+    user_input = input("Do you want to exit the game? (yes/no): ")
+    return user_input.lower() == "yes"
 
 
 def play_battleship_game():
@@ -70,10 +70,10 @@ def play_battleship_game():
 
     player_name = input("Enter your name: ")
     print("\n")
-    print(f"Ready {player_name}! Let's play Battleship.")
+    print(f"READY {player_name}! Let's play Battleship.")
     print("\n")
       
-    # Generate 5 random hidden boat positions 
+    # Generate 3 random hidden boat positions 
     boat = generate_random_boats()
     hidden_boats = ['?' for _ in range(48)]
 
@@ -81,7 +81,7 @@ def play_battleship_game():
     print("You have a total of 20 turns to sink 3 hidden ships.")
     print("Guess a row and a column (0-6).You will see X when you hit a ship.")
     print("Otherwise O if you miss.")
-    print("Type'exit' in instead of row if you want to quit")
+    print("Type'exit' instead of row number if you want to quit")
     print("Choose Wisely,GOODLUCK!")
     print("\n")
 
@@ -107,6 +107,13 @@ def play_battleship_game():
                 print("Incorrect number, it's been used before.")
             else:
                 boat, hit, miss = check_shot(shot, boat, hit, miss)
+                if shot in boat:
+                    ships_found += 1
+                    print(f"You've hit one! Total found: {ships_found}")
+                    if ships_found == 3:
+                        print("Congrats!You have sunk 3 ships.You WIN!")
+                        if exit_game():
+                            return
         except ValueError:
             print("Incorrect entry - please enter your guess as a number.")
             print("\n")
