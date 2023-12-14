@@ -1,21 +1,21 @@
 # Battle-Ship
  
-A strategic board game played between two players.In this case,this game will be played against a computer, 
-The program allows the user to place their ships on their side of the board and then attack the computers ships on its board. 
+A strategic board game played by one player. In this case, this game will be played by guessing randomly hidden ships. 
+The program allows you to guess by row and column. The board is small and the turns are 20x to make the chances of the ships to be found easily. A quick and short game to find 3 ships will keep a player interested in playing more. 
 
 ## How to play
 
 The rules of the game are fairly simple. It begins by asking the player to choose a username and their board is created.
-The user will select a row and column within the range of 1-5.And they are guessed as two digits ,for example "23", 2 which is column and 3 is the row.
-Once a valid value is entered by the user.
-After both a valid row and column are entered by the user, a sign is displayed on the board depending on whether or not their guess was correct. If the user managed to successfully "hit" a ship, they are told their guess was correct, and an "X" is displayed on the board which corresponds with the row and column selected by the user. If their guess was incorrect, however, then a "-" is shown on the board, and they are told they guessed incorrectly.
-If the user happens to select a row or column outside of that range or enter an unrecognised key, they will be given an error message and asked to type in a valid row.
+The user will select a row and column from 0 - 6.
+After both a valid row and column are entered by the user, a sign is displayed on the board depending on whether or not their guess was correct. If the user managed to hit a ship successfully, they are told their guess was correct by seeing "X" displayed on the board which corresponds with the row and column selected by the user. If their guess was incorrect, however "O" is displayed on the board.
+If the user happens to select a row or column outside of that range or enter an unrecognized key, they will be given an error message and asked to type in a valid row.
 
-
-CHECK
 The player has a total of SHips goes to try and sink 10 out of 40 hidden ships on the board. 
 Once they run out of all SHIPS, they are presented with a game-over message and the game ends. 
 If the user successfully manages to guess the correct position of all NO>SHIPS, however, then they are presented with an congratulatory message and told they have sunk all ships. Upon each successful hit that the user correctly guesses on the board.
+
+
+Here is a live link to the game :- https://thebattleship-7ec99083b645.herokuapp.com/
 
 ---
 
