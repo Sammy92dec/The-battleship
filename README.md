@@ -23,34 +23,20 @@ Here is a live link to the game :- https://thebattleship-7ec99083b645.herokuapp.
 
 ## CONTENTS
 
-* [User Experience](#user-experience-ux)
-  * [User Stories](#user-stories)
-
-* [Design](#design)
-
+* [User Stories](#user-stories)
 * [Features](#features)
   * [Future Implementations](#future-implementations)
-  * [Accessibility](#accessibility)
-
-* [Technologies Used](#technologies-used)
   * [Languages Used](#languages-used)
-  * [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
-
 * [Testing](#testing)
-
 * [Credits](#credits)
   * [Code Used](#code-used)
   * [Content](#content)
   
-  * [Acknowledgments](#acknowledgments)
+
 
 ---
 
-## User experience (UX)
-
-
-
-### User stories
+## User stories
 A simple and fun game to play.
 Easy to understand the structure of the webpage. 
 
@@ -59,27 +45,26 @@ Easy to understand the structure of the webpage.
 To play a fun game.
 To  play a game that is easy to navigate and understand.
 
-### Future Implementations
+## Future Implementations
 
 - To set a break for best out of five.
 - To be able to start over without pressing run program.
 - To have players board. 
 
-### Accessibility
+## Languages Used
 
-## Technologies Used
+- Python
 
-### Languages Used
+### Testing
 
-### Frameworks, Libraries & Programs Used
+- Used PEP8 to test the code.All it gave me back was white space and spaces between the funtion.
 
-## Testing
+## Solved bugs
+ 
+- Ships left and To hint where the ships are.
+- I wasn't able to fix the code so I had to remove the code.
 
-
-### Solved bugs
-
-##  **Deploying to Heroku**
-
+###  **Deploying to Heroku**
 1. Go to [Heroku](https://id.heroku.com/login), create account if you don't have and log in.
 - Head to your dashboard and click "New", then "Create new app"
 - New/CreateNewApp
@@ -111,12 +96,12 @@ To  play a game that is easy to navigate and understand.
 
 - "Love Sandwiches" project for inspirtation and Should me how to deploy the game with Heroku.
 
+- Google to being my building block.
+
 ### Code Used
 
 - Inspiration for the program came from youtube tutorials that I have watched and other students projects from code insistute.But the code are original.
 
-### Content
+## Content
 
 Written by Samrawit Tekheste.
-  
-###  Acknowledgments
