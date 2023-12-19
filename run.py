@@ -3,6 +3,7 @@ import random
 
 # Get inputs like row and column, Input to exit the game
 
+
 def get_shot(guesses):
     while True:
         row = input("Please enter the row (0 - 6): ")
@@ -25,9 +26,7 @@ def get_shot(guesses):
             print("Incorrect entry,Please enter your number.")
 
 
-# Creating the board
-
-
+# Creating the board displaying X and O
 def show_board(hit, miss):
     print("===== BATTLESHIP Board =====")
     print("    0  1  2  3  4  5  6 ")
@@ -118,7 +117,7 @@ def play_battleship_game():
         guesses = hit + miss
         shot = get_shot(guesses)
         print("\n")
-     
+
         if shot == "exit":
             if exit_game():
                 return
